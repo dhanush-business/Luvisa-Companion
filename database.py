@@ -28,7 +28,7 @@ def get_db():
     client.admin.command('ping')
     print("✅ Pinged deployment. MongoDB connection successful.")
     
-    return client.luvisa_db
+    return client.luvisa-db
 
 # --- User Operations ---
 
@@ -160,4 +160,5 @@ def delete_chat_history(db, user_id):
         return True
     except Exception as e:
         print(f"🔥 Error deleting chat history: {e}")
+
         return False
