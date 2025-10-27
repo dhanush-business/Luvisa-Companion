@@ -1,5 +1,5 @@
 // --- Backend URL ---
-const BACKEND_URL = ''; // Relative path
+const BACKEND_URL = 'http://127.0.0.1:5000'; // Relative path
 
 // --- Default Avatar Path (Served by Frontend/Vercel) ---
 const DEFAULT_AVATAR_STATIC_PATH = "/avatars/default_avatar.png";
@@ -162,4 +162,5 @@ async function saveProfileChanges() {
         saveProfileBtn.classList.remove("loading");
         saveProfileBtn.disabled = false;
     }
+
 }
