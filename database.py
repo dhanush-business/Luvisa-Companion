@@ -18,9 +18,9 @@ def load_config():
 
 def get_db():
     """Connects to MongoDB and returns the database object."""
-    uri = os.getenv("MONGODB_URI")
+    uri = os.getenv("MONOGODB_URI_MONGODB_URI")
     if not uri:
-        raise ValueError("MONGODB_URI must be set in .env")
+        raise ValueError("MONOGODB_URI_MONGODB_URI must be set in .env")
 
     client = MongoClient(uri, server_api=ServerApi('1'))
     
@@ -162,3 +162,4 @@ def delete_chat_history(db, user_id):
         print(f"🔥 Error deleting chat history: {e}")
 
         return False
+
