@@ -11,7 +11,7 @@ import json
 from dotenv import load_dotenv
 from groq import Groq
 import nltk
-import text2emotion as te
+#import text2emotion as te
 import firebase_admin
 from firebase_admin import credentials, auth
 from bson.objectid import ObjectId
@@ -30,28 +30,11 @@ STATIC_FOLDER = 'web'
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
 CORS(app)
 
-
-# --- NLTK Data Download ---
-def download_nltk_data():
-    """Checks for and downloads required NLTK data for text2emotion."""
-    required_data = {
-        'corpora/wordnet.zip': 'wordnet',
-        'corpora/omw-1.4.zip': 'omw-1.4',
-        'tokenizers/punkt.zip': 'punkt',
-        'corpora/stopwords.zip': 'stopwords'
-    }
-    for zip_path, package_id in required_data.items():
-        try:
-            nltk.data.find(zip_path.replace('.zip', ''))
-            print(f"✅ NLTK data '{package_id}' found.")
-        except LookupError:
-            print(f"⏳ NLTK data '{package_id}' not found. Downloading...")
-            nltk.download(package_id)
-            print(f"✅ NLTK data '{package_id}' downloaded successfully.")
-
-# --- RUN THE DOWNLOAD ONCE AT BUILD TIME ---
-download_nltk_data() # Usually uncommented for Vercel build
-
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    print("⚠️ Missing NLTK data. Please ensure it's preloaded locally.")
+    
 # --- Firebase Initialization ---
 try:
     firebase_key_base64 = os.getenv("FIREBASE_KEY_BASE64")
@@ -501,4 +484,5 @@ def handler(event=None, context=None):
 #     print("🚀 Starting Flask app locally...")
 
 #     app.run(host="0.0.0.0", port=5000, debug=True)
+
 
