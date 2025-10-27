@@ -18,9 +18,9 @@ def load_config():
     
 def get_db():
     """Connects to MongoDB and returns the database object."""
-    uri = os.getenv("MONOGODB_URI")
+    uri = os.getenv("MONGODB_URI")
     if not uri:
-        raise ValueError("MONOGODB_URI must be set in environment variables")
+        raise ValueError("MONGODB_URI must be set in environment variables")
 
     client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -28,7 +28,7 @@ def get_db():
     client.admin.command('ping')
     print("✅ MongoDB connection successful.")
 
-    return client["luvisa_db"]
+    return client["luvisa-user"]
 
 
 # --- User Operations ---
@@ -103,7 +103,7 @@ def update_profile_picture(db, user_id, image_data, content_type):
     Reads image bytes and stores it directly in the user's document.
     Enforces a 50KB size limit.
     """
-    MAX_PROFILE_PIC_SIZE = 50 * 1024  # 50 KB
+    MAX_PROFILE_PIC_SIZE = 100 * 1024  # 50 KB
     
     try:
         if len(image_data) > MAX_PROFILE_PIC_SIZE:
@@ -163,6 +163,7 @@ def delete_chat_history(db, user_id):
         print(f"🔥 Error deleting chat history: {e}")
 
         return False
+
 
 
 
