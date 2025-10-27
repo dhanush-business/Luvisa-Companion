@@ -109,7 +109,7 @@ try:
         raise Exception("Database connection returned None.")
     else:
         # --- ADDED: Call setup_indexes ---
-        # database.setup_indexes(db) # <-- COMMENT THIS LINE OUT
+        database.setup_indexes(db) # <-- COMMENT THIS LINE OUT
         pass # Add pass to avoid an indentation error
         # --- END ---
 
@@ -493,10 +493,11 @@ def handler(event=None, context=None):
     return app
 
 # Only for local dev:
-if __name__ == "__main__":
-    try:
-        download_nltk_data()
-    except Exception as e:
-        print(f"Warning: NLTK download failed on startup: {e}")
-    print("🚀 Starting Flask app locally...")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+# if __name__ == "__main__":
+#     try:
+#         download_nltk_data()
+#     except Exception as e:
+#         print(f"Warning: NLTK download failed on startup: {e}")
+#     print("🚀 Starting Flask app locally...")
+
+#     app.run(host="0.0.0.0", port=5000, debug=True)
