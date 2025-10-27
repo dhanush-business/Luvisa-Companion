@@ -15,6 +15,7 @@ import nltk
 import firebase_admin
 from firebase_admin import credentials, auth
 from bson.objectid import ObjectId
+from database import get_db
 
 # --- UPDATED: Import send_from_directory ---
 from flask import Flask, request, jsonify, send_from_directory, Response
@@ -484,5 +485,6 @@ def handler(event=None, context=None):
 #     print("🚀 Starting Flask app locally...")
 
 #     app.run(host="0.0.0.0", port=5000, debug=True)
+
 
 
