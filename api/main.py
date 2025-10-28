@@ -33,8 +33,8 @@ import database # Your database module
 STATIC_FOLDER = 'web'
 
 # --- Initialize Flask App ---
-app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
-CORS(app)
+# app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
+# CORS(app)
 
 try:
     nltk.data.find('tokenizers/punkt')
@@ -490,6 +490,7 @@ def handler(event=None, context=None):
 #     print("🚀 Starting Flask app locally...")
 
 #     app.run(host="0.0.0.0", port=5000, debug=True)
+
 
 
 
