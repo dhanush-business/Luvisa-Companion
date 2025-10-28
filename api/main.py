@@ -18,8 +18,8 @@ from bson.objectid import ObjectId
 from database import get_db
 
 # --- UPDATED: Import send_from_directory ---
-# from flask import Flask, request, jsonify, send_from_directory, Response
-# from flask_cors import CORS
+from flask import Flask, request, jsonify, send_from_directory, Response
+from flask_cors import CORS
 # app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
 # CORS(app)
 
@@ -490,6 +490,7 @@ def handler(event=None, context=None):
 #     print("🚀 Starting Flask app locally...")
 
 #     app.run(host="0.0.0.0", port=5000, debug=True)
+
 
 
 
