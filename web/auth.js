@@ -1,5 +1,5 @@
 // --- NEW: Define Backend URL ---
-const BACKEND_URL = 'http://0.0.0.0/0'; // Use relative path
+const BACKEND_URL = ''; // Use relative path
 
 document.addEventListener("DOMContentLoaded", () => {
     handleAutoLogin(); // Runs automatically
@@ -164,4 +164,5 @@ async function signupUser() {
     }
 
 }
+
 
