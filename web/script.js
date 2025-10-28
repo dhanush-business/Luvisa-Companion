@@ -1,5 +1,5 @@
 // --- Backend URL ---
-const BACKEND_URL = 'http://0.0.0.0/0'; // Relative path
+const BACKEND_URL = ''; // Relative path
 
 // --- Default Avatar Path ---
 const DEFAULT_AVATAR_STATIC_PATH = "/avatars/default_avatar.png";
