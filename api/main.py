@@ -20,17 +20,21 @@ from database import get_db
 # --- UPDATED: Import send_from_directory ---
 from flask import Flask, request, jsonify, send_from_directory, Response
 from flask_cors import CORS
+
+STATIC_FOLDER = "web"  # Must be declared before Flask app
+app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 # app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
 # CORS(app)
 
-app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
-CORS(app, resources={r"/api/*": {"origins": "https://luvisa-companion.vercel.app"}})
+# app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
+# CORS(app, resources={r"/api/*": {"origins": "https://luvisa-companion.vercel.app"}})
 
 import database # Your database module
 
 # --- Configuration & Setup ---
 # Tell Flask where to find static files (CSS, JS, images)
-STATIC_FOLDER = 'web'
+# STATIC_FOLDER = 'web'
 
 # --- Initialize Flask App ---
 # app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path='')
@@ -490,6 +494,9 @@ def handler(event=None, context=None):
 #     print("🚀 Starting Flask app locally...")
 
 #     app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 
 
